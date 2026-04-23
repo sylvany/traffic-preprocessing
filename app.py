@@ -218,7 +218,7 @@ with tab_image:
                             unsafe_allow_html=True)
                 img_rgb = cv2.cvtColor(result.original, cv2.COLOR_BGR2RGB)
                 st.image(img_rgb, caption="Input Mentah (BGR Full Color)",
-                         use_column_width=True)
+                         use_container_width=True)
                 st.markdown(f"""
                 <div class="tech-note">
                 📐 Resolusi asli: <strong>{result.metadata['original_shape'][1]}×{result.metadata['original_shape'][0]} px</strong>
@@ -229,7 +229,7 @@ with tab_image:
                 st.markdown('<span class="stage-badge">TAHAP 1 — GRAYSCALE + RESIZE</span>',
                             unsafe_allow_html=True)
                 st.image(result.gray, caption="Setelah Grayscaling & Resize",
-                         use_column_width=True)
+                         use_container_width=True)
                 h, w = result.gray.shape
                 st.markdown(f"""
                 <div class="tech-note">
@@ -246,7 +246,7 @@ with tab_image:
                 st.markdown('<span class="stage-badge">TAHAP 2 — GAUSSIAN BLUR</span>',
                             unsafe_allow_html=True)
                 st.image(result.blurred, caption=f"Setelah Gaussian Blur (kernel {blur_kernel}×{blur_kernel})",
-                         use_column_width=True)
+                         use_container_width=True)
                 st.markdown(f"""
                 <div class="tech-note">
                 🌫️ Kernel konvolusi: <strong>{blur_kernel}×{blur_kernel}</strong>
@@ -257,7 +257,7 @@ with tab_image:
                 st.markdown('<span class="stage-badge">TAHAP 3 — CANNY EDGE DETECTION</span>',
                             unsafe_allow_html=True)
                 st.image(result.edges, caption=f"Setelah Canny Edge (T_low={canny_low}, T_high={canny_high})",
-                         use_column_width=True)
+                         use_container_width=True)
                 st.markdown(f"""
                 <div class="tech-note">
                 🔍 Edge pixel: <strong>{result.metadata['edge_pixel_count']:,}</strong>
@@ -276,7 +276,7 @@ with tab_image:
                 st.image(result.morphed,
                          caption=f"Gambar Siap Deteksi — Setelah Morphological Closing "
                                   f"(kernel {morph_kernel}×{morph_kernel}, iter={morph_iter})",
-                         use_column_width=True)
+                         use_container_width=True)
 
             with col6:
                 st.markdown("#### 📈 Statistik Pipeline")
@@ -389,22 +389,22 @@ with tab_video:
                         c1, c2, c3, c4 = st.columns(4)
                         with c1:
                             st.image(cv2.cvtColor(r.original, cv2.COLOR_BGR2RGB),
-                                     caption="Original", use_column_width=True)
+                                     caption="Original", use_container_width=True)
                         with c2:
-                            st.image(r.gray, caption="Grayscale", use_column_width=True)
+                            st.image(r.gray, caption="Grayscale", use_container_width=True)
                         with c3:
-                            st.image(r.edges, caption="Canny Edge", use_column_width=True)
+                            st.image(r.edges, caption="Canny Edge", use_container_width=True)
                         with c4:
                             st.image(r.morphed, caption="Morfologi ✓",
-                                     use_column_width=True)
+                                     use_container_width=True)
                     else:
                         c1, c2 = st.columns(2)
                         with c1:
                             st.image(cv2.cvtColor(r.original, cv2.COLOR_BGR2RGB),
-                                     caption="Original", use_column_width=True)
+                                     caption="Original", use_container_width=True)
                         with c2:
                             st.image(r.morphed, caption="Hasil Preprocessing",
-                                     use_column_width=True)
+                                     use_container_width=True)
 
         os.unlink(tmp_path)
 
